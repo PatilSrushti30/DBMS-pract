@@ -1,0 +1,189 @@
+3. Assignment on various types of Constraints.
+
+
+Constraints:
+* Primary key A PRIMARY KEY constraint for a table enforces the table to accept unique data for a specific column and this constraint create a unique index for accessing the table faster
+* UNIQUE The UNIQUE constraint does not allow to insert a duplicate value in a column.
+* NOT NULL NOT NULL constraint allows to specify that a column can not contain any NULL value.
+* FOREIGN KEY A FOREIGN KEY creates a link between two tables by one specific column of both table. The specified column in one table must be a PRIMARY KEY and referred by the column of another table known as FOREIGN KEY.
+* CHECK The CHECK constraint determines whether the value is valid or not from a logical expression.
+* DEFAULT While inserting data into a table, if no value is supplied to a column, then the column gets the value set as DEFAULT
+
+
+
+A. NOT NULL - Ensures that a column cannot have a NULL value
+Create Table Persons (
+    ID int NOT NULL,
+    LastName varchar(10) NOT NULL,
+    FirstName varchar(10) NOT NULL,
+    Age int
+);
+OR
+
+Create Table Persons (
+    ID int,
+    LastName varchar(10),
+    FirstName varchar(10),
+    Age int
+);
+Using Alter command 
+
+Alter Table Persons
+Modify (ID int Not Null,
+	     LastName varchar(10) NOT NULL,
+        FirstName varchar(10) NOT NULL
+	   );
+
+B. UNIQUE - Ensures that all values in a column are different
+
+Create Table Persons (
+    ID int NOT NULL,
+    LastName varchar(10) NOT NULL,
+    FirstName varchar(10),
+    Age int,
+    UNIQUE (ID)
+);
+
+Unique key to multiple columns
+
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CONSTRAINT UC_Person UNIQUE (ID,LastName)
+);
+
+
+C. PRIMARY KEY - A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table
+
+Primary key to single columns
+
+Create Table Persons (
+    ID int NOT NULL PRIMARY KEY,
+    LastName varchar(10) NOT NULL,
+    FirstName varchar(10),
+    Age int
+);
+
+
+Primary key to multiple columns
+
+Create Table Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CONSTRAINT PK_Person PRIMARY KEY (ID,LastName)
+);
+
+Add Primary key to single columns
+	ALTER TABLE Persons
+	ADD PRIMARY KEY (ID);
+		
+Add Primary key to multiple columns
+	ALTER TABLE Persons
+	ADD CONSTRAINT PK_Person PRIMARY KEY (ID,LastName);
+
+Drop Primary Key to single columns
+	ALTER TABLE Persons
+	DROP PRIMARY KEY;
+
+Drop Primary Key to single columns
+	ALTER TABLE Persons
+	DROP CONSTRAINT PK_Person;
+
+
+
+D. FOREIGN KEY - Uniquely identifies a row/record in another table
+
+Foreign key to single columns
+CREATE TABLE Orders (
+    OrderID int NOT NULL PRIMARY KEY,
+    OrderNumber int NOT NULL,
+    PersonID int FOREIGN KEY REFERENCES Persons(PersonID)
+);
+
+Foreign key to multiple columns
+CREATE TABLE Orders (
+    OrderID int NOT NULL,
+    OrderNumber int NOT NULL,
+    PersonID int,
+    PRIMARY KEY (OrderID),
+    CONSTRAINT FK_PersonOrder FOREIGN KEY (PersonID)
+    REFERENCES Persons(PersonID)
+);
+
+Add foreign key to single columns	
+ALTER TABLE Orders
+ADD FOREIGN KEY (PersonID) REFERENCES Persons(PersonID);
+
+Add foreign key to multiple columns
+ALTER TABLE Orders
+ADD CONSTRAINT FK_PersonOrder
+FOREIGN KEY (PersonID) REFERENCES Persons(PersonID);
+
+Drop to Foreign key 
+ALTER TABLE Orders
+DROP CONSTRAINT FK_PersonOrder;
+
+E. CHECK - Ensures that all values in a column satisfies a specific condition
+
+Check to single columns
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int CHECK (Age>=18)
+);
+
+Check to multiple columns
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    City varchar(255),
+    CONSTRAINT CHK_Person CHECK (Age>=18 AND City='India')
+);
+
+Add Check to single column
+ALTER TABLE Persons
+ADD CHECK (Age>=18);
+
+Add Check to multiple columns
+ALTER TABLE Persons
+ADD CONSTRAINT CHK_PersonAge CHECK (Age>=18 AND City='India');
+
+Drop to Check
+ALTER TABLE Persons
+DROP CONSTRAINT CHK_PersonAge;
+
+
+
+
+F. DEFAULT - Sets a default value for a column when no value is specified
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    City varchar(255) DEFAULT 'India'
+);
+
+Add the GetDate() as default 
+CREATE TABLE Orders (
+    ID int NOT NULL,
+    OrderNumber int NOT NULL,
+    OrderDate date DEFAULT GETDATE()
+);
+
+
+Add Check to single column
+ALTER TABLE Persons
+MODIFY City DEFAULT 'India';
+
+Drop to Check
+ALTER TABLE Persons
+ALTER COLUMN City DROP DEFAULT;
+

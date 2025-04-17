@@ -1,0 +1,107 @@
+4. Assignment on select clause, where clause, Ordered By, Distinct, Group By etc.
+Create Table Persons (
+    ID int NOT NULL,
+    LastName varchar(10) NOT NULL,
+    FirstName varchar(10) NOT NULL,
+    Age int,
+	 City varchar(10) 
+);
+
+a. Select  clause
+The SELECT statement is used to select data from a database.
+
+To get all data
+	SELECT * FROM Persons;
+
+To get specific data
+	SELECT LastName,FirstName FROM Persons;
+b. where clause
+The WHERE clause is used to filter records.
+		SELECT * FROM Persons
+		WHERE ID=1; 
+
+Operators in The WHERE Clause
+The following operators can be used in the WHERE clause:
+OperatorDescription=Equal<>Not equal. Note: In some versions of SQL this operator may be written as !=>Greater than<Less than>=Greater than or equal<=Less than or equalBETWEENBetween an inclusive rangeLIKESearch for a patternINTo specify multiple possible values for a column
+AND Syntax
+SELECT * FROM Persons
+WHERE City=‘Shirpur’ AND City=‘Dhule;
+
+OR Syntax
+SELECT * FROM Persons
+WHERE City=‘Dhule OR City=‘Jalgaon’;
+
+
+NOT Syntax
+SELECT * FROM Persons
+WHERE NOT City=‘Pune’;
+
+Combining AND, OR and NOT
+
+SELECT * FROM Persons
+WHERE City=‘Shirpur’ AND (City=‘Dhule OR City=‘Jalgaon’);
+
+SELECT * FROM Persons
+WHERE NOT City=‘Shirpur’ AND NOT City='Shirpur';
+
+c. Ordered By
+The ORDER BY keyword is used to sort the result-set in ascending or descending order.
+
+SELECT * FROM Persons
+ORDER BY City;
+
+SELECT * FROM Persons
+ORDER BY City, FirstName;
+
+SELECT * FROM Persons
+ORDER BY City ASC, FirstName DESC;
+
+d. Distinct
+The SELECT DISTINCT statement is used to return only distinct (different) values. 		SELECT DISTINCT City FROM Persons;
+		SELECT COUNT(DISTINCT City) FROM Persons;
+
+
+e. Group By
+The GROUP BY statement is often used with aggregate functions (COUNT, MAX, MIN, SUM, AVG) to group the result-set by one or more columns.
+
+	       GROUP BY Syntax
+		SELECT column_name(s)
+		FROM table_name
+		WHERE condition
+		GROUP BY column_name(s)
+		ORDER BY column_name(s);
+
+SELECT COUNT(ID), City
+FROM Persons
+GROUP BY City;
+
+SELECT COUNT(ID), City
+FROM Persons
+GROUP BY City
+ORDER BY COUNT(ID) DESC;
+
+f. Having
+The HAVING clause was added to SQL because the WHERE keyword could not be used with aggregate functions.
+
+
+
+Having   Syntax
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+GROUP BY column_name(s)
+HAVING condition
+ORDER BY column_name(s);
+
+Example:
+SELECT COUNT(ID), City
+FROM Persons
+GROUP BY City
+HAVING COUNT(ID) > 5;
+
+SELECT COUNT(ID), City
+FROM Persons
+GROUP BY City
+HAVING COUNT(ID) > 5
+ORDER BY COUNT(ID) DESC;
+

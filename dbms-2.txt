@@ -1,0 +1,26 @@
+2. Assignment on DML Commands
+DML: A data manipulation language (DML) is a family of syntax elements similar to a computer programming language used for selecting, inserting, deleting and updating data in a database. Performing read-only queries of data is sometimes also considered a component of DML. 
+Commands in DML are: 
+a. INSERT 
+b. UPDATE 
+c. DELETE 
+d. SELECT 
+
+DML COMMANDS: 
+SYNTAX: 
+INSERT Statement: 
+Single Row into a Table: INSERT INTO table – name [column- identifier-comma-list)] VALUES (column-valuecomma-list); 
+Multiple Row into a Table: insert into <table name> values (&col1, &col2, ….); 
+UPDATE Statement: UPDATE table-name SET update- column-list [WHERE search- condition]; 
+DELETE Statement: DELETE FROM table-name [WHERE search- condition];
+
+
+1Insert the following records in the EMPLOYEE table.INSERT INTO EMPLOYEE (EMPNO,EMPNAME,JOINING_DATE,SALARY,CITY) VALUES (101,’KEYUR’,’5-JAN-02’,12000,RAJKOT);
+INSERT INTO EMPLOYEE (EMPNO,EMPNAME,JOINING_DATE,SALARY,CITY) VALUES (102,’HARDIK’,’12-FEB-04’,14000,AHMEDABAD);
+INSERT INTO EMPLOYEE (EMPNO,EMPNAME,JOINING_DATE,SALARY,CITY) VALUES (103,’KAJAL’,’14-MAR-06’,15000,BARODA);
+INSERT INTO EMPLOYEE (EMPNO,EMPNAME,JOINING_DATE,SALARY,CITY) VALUES (104,’BHOOMI’,’23-JUN-05’,12500,AHMEDABAD);
+INSERT INTO EMPLOYEE (EMPNO,EMPNAME,JOINING_DATE,SALARY,CITY) VALUES (105,’HARDIK’,’15-FEB-04’,14000,RAJKOT);2Insert the following records in the STUDENT table.INSERT INTO STUDENT (ENROLLMENTNO,PNAME,BIRTH_DATE,CPI) VALUES (1105301106,’VIPUL’,’10-JAN-90’,7.5);
+INSERT INTO STUDENT (ENROLLMENTNO,PNAME,BIRTH_DATE,CPI) VALUES (1105301108,’MANAN’,’22-DEC-92’,7);
+INSERT INTO STUDENT (ENROLLMENTNO,PNAME,BIRTH_DATE,CPI) VALUES (1105301123,’KARTIK’,’3-SEP-89’,5.25);
+INSERT INTO STUDENT (ENROLLMENTNO,PNAME,BIRTH_DATE,CPI) VALUES (1105301145,’VIKRAM’,’5-JUN-94’,6);
+INSERT INTO STUDENT (ENROLLMENTNO,PNAME,BIRTH_DATE,CPI) VALUES (1105301189,’RAHUL’,’7-DEC-93’,4.5);3Assign 5.5 as CPI to student with EnrollmentNo equal to 1105301189.UPDATE STUDENT SET CPI = 5.5 WHERE ENROLLMENTNO = 1105301189;4Update city of all employee having Ahmedabad to Surat.UPDATE EMPLOYEE SET CITY = SURAT WHERE CITY = AHMEDABAD;5Give 10% increment in salary to each employee.UPDATE EMPLOYEE SET SALARY =SALARY*0.1+SALARY;6Update city of EmpNo 1 to NULL.UPDATE EMPLOYEE SET CITY=NULL WHERE EMPNO=1;7Delete the records of STUDENT table with CPI less than 6.DELETE FROM STUDENT WHERE CPI < 6;8Delete all the records of EMPLOYEE table having salary less than or equal to 14000.DELETE FROM EMPLOYEE WHERE SALARY < = 14000;9Delete all records from STUDENT table.TRUNCATE TABLE STUDENT;10List all record of STUDENT table.SELECT * FROM STUDENT;11Display all record of STUDENT with CPI more than 6.SELECT * FROM STUDENT WHERE CPI > 6;12Display EnrollmentNo and Name of STUDENT table.SELECT ENROLLMENTNO,NAME FROM STUDENT;13Display Name and CPI of STUDENT with CPI more than 5.SELECT NAME,CPI FROM STUDENT WHERE CPI > 5;14Find out the employee who does not belongs to ‘Baroda’ city.SELECT * FROM EMPLOYEE WHERE CITY != ‘BARODA’;15Display EnrollmentNo, Name and CPI of student in their alphabetical order of name.SELECT ENROLLMENTNO,NAME,CPI FROM STUDENT ORDER BY NAME;16Rename column EnrollmentNo to ENO in the output.SELECT ENROLLMENTNO AS “ENO”,NAME FROM STUDENT;17Display the employees having city name starting with ‘A’.SELECT EMPNO,NAME,SALARY,JOININGDATE,CITY FROM EMPLOYEE WHERE NAME LIKE ‘A%’;18Display the employees whose name have ‘a’ as a second character.SELECT EMPNO,NAME,SALARY,JOININGDATE,CITY FROM EMPLOYEE WHERE NAME LIKE ‘_A%’;19Display the employees whose name consists of five characters.SELECT * FROM EMPLOYEE WHERE NAME LIKE ‘ 	’;

@@ -1,0 +1,58 @@
+  R. C. Patel Educational Trust’s
+Institute of Management Research and Development, Shirpur.
+
+Lab Manual CA-Lab-I LAB on DBMS
+
+1. Assignment on DDL Commands
+
+
+Data Definition Language (DDL):-
+
+DDLstatements are used to define the database structure or schema. 
+
+Table Creation:
+Syntax:        Create table table-name(A1D1,A2D2……….AnDn)
+Description:    To create a new table.
+
+Table Description:
+Syntax:     Desc table-name.
+Description:     To display the structure of the table.
+
+Table Deletion:
+Syntax:    	    Drop table table-name
+Description: 	    To delete the table.
+
+Table Renaming:
+Syntax:     Alter table old-table-name rename to new-table-name
+Description:    To rename the table .
+
+Rename Column:
+Syntax:        Alter table table-name rename column old-column-name to New-column-name
+Description:         To rename the column in the table.
+
+Adding one Column:
+Syntax:    Alter table table-name add A D   
+Description:             To alter the table by adding one column
+Deleting One Column:
+Syntax:             Alter table table-name drop column A
+Description:            To delete one column from the table.
+
+Datatype or Domaintype modification:
+               
+ Syntax:
+             Alter table table-name modify(A1 new   data-type(size),……..An new data-type(size)) 
+ Description:
+            To change the datatype or domaintype.
+
+Table Truncation:
+Syntax:    Truncate table table-name
+Description:     To delete all the records from the table.
+     
+Example:-
+
+Create table STUDENT with the below given table structure.CREATE TABLE STUDENT
+(ENROLLMENTNO VARCHAR2(10) PRIMARY KEY, NAME VARCHAR2(25),
+CPI NUMBER(6,2), BIRTHDATE DATE);Create table EMPLOYEE with the below given table structure.CREATE TABLE EMPLOYEE
+(EMPNO NUMBER(3), EMPNAME VARCHAR2(20), JOININGDATE DATE, SALARY NUMBER(8,2) CITY VARCHAR2(40));Add two more column CITY varchar2(20) and PINCODE number(6) to STUDENT table .ALTER TABLE STUDENT ADD (CITY VARCHAR2(20),PINCODE NUMBER(6));Change the data type of PINCODE column to varchar2(6).ALTER TABLE STUDENT MODIFY (PINCODE VARCHAR2(6));Rename column PINCODE to PCODE in STUDENT table.ALTER TABLE STUDENT RENAME COLUMN PINCODE TO PCODE;Change the size of NAME column of student from 25 to 35.ALTER TABLE STUDENT MODIFY NAME VARCHAR2(35);Delete column PINCODE from the STUDENT table.ALTER TABLE STUDENT DROP COLUMN PINCODE;Change name of table STUDENT to STUDENT_MASTER.RENAME STUDENT TO STUDENT_MASTER;
+Delete the table STUDENT.
+DROP TABLE STUDENT;

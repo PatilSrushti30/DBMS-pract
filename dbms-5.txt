@@ -1,0 +1,54 @@
+5. Assignment on Aggregate Functions.
+
+Count()-To count the number of rows in a table.
+Sum()-To find the total value from the row..
+Avg()-To find the average value from the row.
+Min()-To find the minimum value from the row.
+Max()-To find the maximum value from the row.
+
+a. SUM ( [All | Distinct] expression)
+	Select SUM(Age) Count 
+	From Persons
+
+b. AVG ( [All | Distinct] expression)
+	Select AVG(Age) Count 
+	From Persons
+
+c. COUNT ( [All | Distinct] expression)
+
+d. COUNT ( *)
+	Select Count(*) Count 
+	From Persons
+
+e. MAX (expression)
+	Select MAX(Age) MAXAGE 
+	From Persons
+
+f. MIN(expression)
+	Select MIN(Age) MINAGE 
+	From Persons
+g. SQL LIKE Operator 
+		The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.
+		There are two wildcards used in conjunction with the LIKE operator:
+* % - The percent sign represents zero, one, or multiple characters
+* _ - The underscore represents a single character
+Example-1 Customer Name starting with "a":
+	SELECT * FROM Persons
+	WHERE FirstName LIKE 'a%';
+Example-2 Customer Name ending with "a":
+	SELECT * FROM Persons
+	WHERE FirstName LIKE '%a';
+		Example-3 Customer Name that have "or" in any position:
+			SELECT * FROM Customers
+			WHERE CustomerName LIKE '%or%';
+		Example-4 Customer Name that have "r" in second position:	
+			SELECT * FROM Customers
+			WHERE CustomerName LIKE '_r%';
+	Example-4 Customer Name that starts with "a" and are at least 3 characters in length:	
+		SELECT * FROM Customers
+		WHERE CustomerName LIKE 'a_%_%';
+	Exmaple-5  Selects all customers with a City NOT starting with "b", "s", or "p":
+SELECT * FROM Customers
+WHERE City NOT LIKE '[bsp]%';
+
+1Find maximum, minimum, total salary, average salary from EMPLOYEE table.SELECT AVG(SALARY),MAX(SALARY),MIN(SALARY),SUM(SALARY) FROM EMPLOYEE;2Find total number of employee of EMPLOYEE table.SELECT COUNT("EMPNO")"NO OF EMPLOYEE" FROM EMPLOYEE;3Display city with the total number of employees belonging to each city.SELECT CITY ,COUNT("EMPNO")"NO OF EMPLOYEE" FROM EMPLOYEE GROUP BY CITY;1Find maximum, minimum, total salary, average salary from EMPLOYEE table.SELECT AVG(SALARY),MAX(SALARY),MIN(SALARY),SUM(SALARY) FROM EMPLOYEE;2Find total number of employee of EMPLOYEE table.SELECT COUNT("EMPNO")"NO OF EMPLOYEE" FROM EMPLOYEE;3Display city with the total number of employees belonging to each city.SELECT CITY ,COUNT("EMPNO")"NO OF EMPLOYEE" FROM EMPLOYEE GROUP BY CITY;4Display city having more than one employee.SELECT CITY ,COUNT("EMPNO") FROM EMPLOYEE GROUP BY CITY HAVING COUNT(EMPNO)>1;5Find out the employee who belongs to ‘Rajkot’ or ‘ Baroda’.SELECT * FROM EMPLOYEE WHERE CITY=’RAJKOT’ OR CITY=’BARODA’;6Display the employees having salary between 12000 and 15000.SELECT * FROM EMPLOYEE WHERE SALARY BETWEEN 12000 AND 15000;7Display the employees coming from city ‘Rajkot’ and ‘Baroda’ using set searching operator (IN).SELECT * FROM EMPLOYEE WHERE CITY IN (RAJKOT,BARODA);
